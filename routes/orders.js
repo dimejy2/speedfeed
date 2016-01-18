@@ -9,7 +9,7 @@ router.route('/')
 .post(function(req, res){
     res.set('Content-Type', 'text/xml');
 
-    User.find({phone_number : req.From}, function(err, user){
+    User.find({phone_number : req.body.From}, function(err, user){
         user = user[0];
         console.log (err);
         if(err !== null) return res.send(messages.genericError); 
