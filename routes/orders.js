@@ -8,26 +8,33 @@ var messages = require("../utils/messages.js");
 router.route('/')
 .post(function(req, res){
     res.set('Content-Type', 'text/xml');
-    
-    User.find({phone_number : req.body.From}, function(err, user){
-        user = user[0];
+
+    User.findOne({phone_number : req.body.From}, function(err, user){
         console.log (err, user.username);
-        if(err !== null) return res.send(messages.genericError); 
-        if(!user) return res.send(messages.doesNotExistError); 
-        
+        if(!user){
+            return res.send(messages.doesNotExistError); 
+        }
+        else if(user){
 
-        order = new Order();
+            order = new Order();
 
-        order.Phone_Number = req.body.From;
-        order.delivery_address = user.delivery_address;
-        order.contents = req.body.Body;
-        order.fulfilled = false; 
-        //console.log(req.body, order);
+            order.Phone_Number = req.body.From;
+            order.delivery_address = user.delivery_address;
+            order.contents = req.body.Body;
+            order.fulfilled = false; 
+            //console.log(req.body, order);
 
-        order.save(function(err){
-            if(err) return res.send(messages.genericError);
-            return res.send(messages.success);
-        });
+            order.save(function(err){
+                if(err) return res.send(messages.genericError);
+                return res.send(messages.success);
+            });
+
+        }
+
+        else { 
+            return res.send(messages.genericError); 
+        }
+
     });
 })
 .get(function(req, res){
