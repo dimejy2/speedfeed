@@ -2,11 +2,10 @@ var mongoose = require('mongoose'),
         Schema = mongoose.Schema
         timestamps = require('mongoose-timestamps');
 
-
 var OrderSchema = new Schema({
-    Phone_Number :{type : String, required :true , index , true},
-    Address ;{type : String, required, true}, 
-    Order_Contents :{ type : String, required : true}
+    phone_number :{type : String, required :true , index , true},
+    delivery_address ;{type : String, required, true}, 
+    contents :{ type : String, required : true}
     fulfilled :{type : Boolean, required : true, index , true}
 });
 
