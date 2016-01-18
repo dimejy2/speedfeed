@@ -1,4 +1,4 @@
-var express = require('express');
+v r express = require('express');
 var router = express.Router();
 var User = require("../models/user.js");
 var Order = require("../models/order.js");
@@ -10,6 +10,7 @@ router.route('/')
     res.set('Content-Type', 'text/xml');
 
     User.find({phone_number : req.From}, function(err, user){
+        console.log (err);
         if(err) return res.send(messages.genericError);
         if(!user) return res.send(messages.doesNotExistError); 
 
