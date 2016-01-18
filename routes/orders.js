@@ -8,7 +8,7 @@ var messages = require("../utils/messages.js");
 router.route('/')
 .post(function(req, res){
     res.set('Content-Type', 'text/xml');
-
+    console.log(req.body.From);
     User.find({phone_number : req.body.From}, function(err, user){
         user = user[0];
         console.log (err);
@@ -22,7 +22,7 @@ router.route('/')
         order.delivery_address = user.delivery_address;
         order.contents = req.body.Body;
         order.fulfilled = false; 
-        console.log(req.body, order);
+        //console.log(req.body, order);
 
         order.save(function(err){
             if(err) return res.send(messages.genericError);
