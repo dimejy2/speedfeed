@@ -8,10 +8,10 @@ var messages = require("../utils/messages.js");
 router.route('/')
 .post(function(req, res){
     res.set('Content-Type', 'text/xml');
-    console.log(req.body.From);
+    
     User.find({phone_number : req.body.From}, function(err, user){
         user = user[0];
-        console.log (err);
+        console.log (erri, user);
         if(err !== null) return res.send(messages.genericError); 
         if(!user) return res.send(messages.doesNotExistError); 
         
