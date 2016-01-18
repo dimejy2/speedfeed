@@ -13,10 +13,10 @@ router.route('/')
         if(err)  return res.send(messages.genericError); 
         if(!user) return res.send(messages.doesNotExistError); 
         
-
+            console.log(user.delivery_address);
             order = new Order();
             order.phone_number = req.body.From;
-            order.delivery_address = user.address;
+            order.delivery_address = user.delivery_address;
             order.contents = req.body.Body;
             order.fulfilled = false; 
 
