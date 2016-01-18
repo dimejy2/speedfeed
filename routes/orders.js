@@ -31,7 +31,7 @@ router.route('/')
     });
 })
 .get(function(req, res){
-    Orders.find(function(err, orders){
+    Order.find(function(err, orders){
        if(err) return res.send(err);
        res.send(orders);
     }); 
