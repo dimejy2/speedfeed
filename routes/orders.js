@@ -10,11 +10,9 @@ router.route('/')
     res.set('Content-Type', 'text/xml');
 
     User.findOne({phone_number : req.body.From}, function(err, user){
-        console.log (err, user.username);
-        if(!user){
-            return res.send(messages.doesNotExistError); 
-        }
-        else if(user){
+        if(err)  return res.send(messages.genericError); 
+        if(!user) return res.send(messages.doesNotExistError); 
+        
 
             order = new Order();
 
@@ -25,15 +23,12 @@ router.route('/')
             //console.log(req.body, order);
 
             order.save(function(err){
-                if(err) return res.send(messages.genericError);
+                if(err){ return res.send(messages.genericError);
+                console.log(err);}
                 return res.send(messages.success);
             });
 
-        }
 
-        //else { 
-        //    return res.send(messages.genericError); 
-        //}
 
     });
 })
