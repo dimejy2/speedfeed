@@ -11,5 +11,9 @@ router.route('/')
 .post(function(req, res){
     console.log(req.body);
     res.send(req.body);
-});
+})
+.get(function(req, res){
+
+})
+;
 module.exports = router;

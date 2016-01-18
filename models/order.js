@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-        Schema = mongoose.Schema;
+        Schema = mongoose.Schema
+        timestamps = require('mongoose-timestamps');
 
 
 var OrderSchema = new Schema({
@@ -9,4 +10,5 @@ var OrderSchema = new Schema({
     fulfilled :{type : Boolean, required : true, index , true}
 });
 
+OrderSchema.plugin(timestamps);
 module.exports = mongoose.model('Order', OrderSchema);
