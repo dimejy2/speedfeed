@@ -31,9 +31,9 @@ router.route('/')
 
         }
 
-        else { 
-            return res.send(messages.genericError); 
-        }
+        //else { 
+        //    return res.send(messages.genericError); 
+        //}
 
     });
 })
