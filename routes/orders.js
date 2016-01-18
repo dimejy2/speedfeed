@@ -11,7 +11,7 @@ router.route('/')
     
     User.find({phone_number : req.body.From}, function(err, user){
         user = user[0];
-        console.log (erri, user);
+        console.log (err, user);
         if(err !== null) return res.send(messages.genericError); 
         if(!user) return res.send(messages.doesNotExistError); 
         
