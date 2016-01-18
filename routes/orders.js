@@ -23,7 +23,7 @@ router.route('/')
             //console.log(req.body, order);
 
             order.save(function(err){
-                console.log("here");
+                console.log(err);
                 if(err){ return res.send(messages.genericError);
                 console.log(err);}
                 return res.send(messages.success);
