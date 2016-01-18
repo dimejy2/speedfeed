@@ -31,7 +31,10 @@ router.route('/')
     });
 })
 .get(function(req, res){
-  res.render('index', { title: 'This is the orders endpoint' });
+    Orders.find(function(err, orders){
+       if(err) return res.send(err);
+       res.send(orders);
+    }); 
 });
 
 
