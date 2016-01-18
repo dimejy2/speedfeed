@@ -13,7 +13,6 @@ router.route('/')
         if(err)  return res.send(messages.genericError); 
         if(!user) return res.send(messages.doesNotExistError); 
         
-            console.log(user.delivery_address);
             order = new Order();
             order.phone_number = req.body.From;
             order.delivery_address = user.delivery_address;
@@ -21,9 +20,7 @@ router.route('/')
             order.fulfilled = false; 
 
             order.save(function(err){
-                console.log(err);
-                if(err){ return res.send(messages.genericError);
-                console.log(err);}
+                if(err) return res.send(messages.genericError);
                 return res.send(messages.success);
             });
 
