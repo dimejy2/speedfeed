@@ -1,4 +1,5 @@
-var express = require('express');
+v 
+r express = require('express');
 var router = express.Router();
 var User = require("../models/user.js");
 var Order = require("../models/order.js");
@@ -15,8 +16,8 @@ router.route('/')
         
 
             order = new Order();
-
-            order.Phone_Number = req.body.From;
+            console.log(user.delivery_address);
+            order.phone_number = req.body.From;
             order.delivery_address = user.delivery_address;
             order.contents = req.body.Body;
             order.fulfilled = false; 
