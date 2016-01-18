@@ -6,7 +6,7 @@ var UserSchema = new Schema({
     username : {type: String, required : true, index : {unique : true}}, 
     password : {type : String, required : true ,select : false}, 
     phone_number : { type : String, required : true, index :{unique: true}},
-    delivery_address :{type : String}, 
+    delivery_address :{type : String, required : true}, 
     __v : {type  : Number, select : false}
 
 }); 
